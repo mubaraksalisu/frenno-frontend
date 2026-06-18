@@ -15,7 +15,9 @@ import { PaymentForm } from '../features/payments/components/PaymentForm';
 import { useAssignDriver, useDeleteVehicle, useNextWeekNumber, useUpdateVehicle, useVehicle } from '../hooks/useVehicles';
 import { useCreatePayment, usePayments } from '../hooks/usePayments';
 import { formatCurrency, formatDate } from '../lib/format';
+import { getErrorMessage } from '../lib/errors';
 import { Skeleton } from '../components/Skeleton';
+import { ErrorState } from '../components/ErrorState';
 
 export function VehicleDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -74,6 +76,16 @@ export function VehicleDetailPage() {
     } catch {
       // Global mutation error toast already shown; keep the confirm dialog open so the admin can retry.
     }
+  }
+
+  if (vehicle.isError) {
+    return (
+      <ErrorState
+        message={getErrorMessage(vehicle.error)}
+        actionLabel="Back to Vehicles"
+        onAction={() => navigate('/vehicles')}
+      />
+    );
   }
 
   if (vehicle.isLoading || !vehicle.data) {

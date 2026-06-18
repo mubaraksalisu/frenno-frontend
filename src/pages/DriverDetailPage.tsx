@@ -8,7 +8,9 @@ import type { DriverFormValues } from '../features/drivers/components/DriverForm
 import { DriverForm } from '../features/drivers/components/DriverForm';
 import { useDeleteDriver, useDriver, useUpdateDriver } from '../hooks/useDrivers';
 import { formatCurrency } from '../lib/format';
+import { getErrorMessage } from '../lib/errors';
 import { Skeleton } from '../components/Skeleton';
+import { ErrorState } from '../components/ErrorState';
 
 export function DriverDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -40,6 +42,16 @@ export function DriverDetailPage() {
     } catch {
       // Global mutation error toast already shown; keep the confirm dialog open so the admin can retry.
     }
+  }
+
+  if (driver.isError) {
+    return (
+      <ErrorState
+        message={getErrorMessage(driver.error)}
+        actionLabel="Back to Drivers"
+        onAction={() => navigate('/drivers')}
+      />
+    );
   }
 
   if (driver.isLoading || !driver.data) {
