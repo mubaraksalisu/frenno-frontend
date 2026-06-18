@@ -66,9 +66,13 @@ export function VehicleDetailPage() {
 
   async function handleDelete() {
     if (!id) return;
-    await deleteVehicle.mutateAsync(id);
-    setIsDeleteOpen(false);
-    navigate('/vehicles');
+    try {
+      await deleteVehicle.mutateAsync(id);
+      setIsDeleteOpen(false);
+      navigate('/vehicles');
+    } catch {
+      // Global mutation error toast already shown; keep the confirm dialog open so the admin can retry.
+    }
   }
 
   if (vehicle.isLoading || !vehicle.data) {

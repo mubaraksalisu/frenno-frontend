@@ -40,6 +40,7 @@ export function useCreateVehicle() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: VehicleInput) => createVehicle(input),
+    meta: { suppressErrorToast: true },
     onSuccess: () => {
       invalidateVehiclesList(queryClient);
       invalidateDashboard(queryClient);
@@ -51,6 +52,7 @@ export function useUpdateVehicle(id: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: Partial<VehicleInput>) => updateVehicle(id, input),
+    meta: { suppressErrorToast: true },
     onSuccess: () => {
       invalidateVehiclesList(queryClient);
       invalidateVehicleDetail(queryClient, id);
@@ -63,6 +65,7 @@ export function useAssignDriver(id: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: AssignDriverInput) => assignDriver(id, input),
+    meta: { suppressErrorToast: true },
     onSuccess: (vehicle) => {
       invalidateVehiclesList(queryClient);
       invalidateVehicleDetail(queryClient, id);

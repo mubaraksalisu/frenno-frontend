@@ -16,6 +16,7 @@ export function useCreatePayment() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: PaymentInput) => createPayment(input),
+    meta: { suppressErrorToast: true },
     onSuccess: (payment) => {
       invalidatePaymentsList(queryClient);
       invalidateVehicleDetail(queryClient, payment.vehicleId);

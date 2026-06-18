@@ -19,6 +19,7 @@ export function useCreateDriver() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: DriverInput) => createDriver(input),
+    meta: { suppressErrorToast: true },
     onSuccess: () => {
       invalidateDriversList(queryClient);
       invalidateDashboard(queryClient);
@@ -30,6 +31,7 @@ export function useUpdateDriver(id: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: Partial<DriverInput>) => updateDriver(id, input),
+    meta: { suppressErrorToast: true },
     onSuccess: () => {
       invalidateDriversList(queryClient);
       invalidateDriverDetail(queryClient, id);

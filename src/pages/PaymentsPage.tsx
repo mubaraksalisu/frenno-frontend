@@ -40,8 +40,12 @@ export function PaymentsPage() {
 
   async function handleDelete() {
     if (!paymentToDelete) return;
-    await deletePayment.mutateAsync({ id: paymentToDelete.id, vehicleId: paymentToDelete.vehicleId });
-    setPaymentToDelete(null);
+    try {
+      await deletePayment.mutateAsync({ id: paymentToDelete.id, vehicleId: paymentToDelete.vehicleId });
+      setPaymentToDelete(null);
+    } catch {
+      // Global mutation error toast already shown; keep the confirm dialog open so the admin can retry.
+    }
   }
 
   return (

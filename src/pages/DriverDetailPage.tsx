@@ -32,9 +32,13 @@ export function DriverDetailPage() {
 
   async function handleDelete() {
     if (!id) return;
-    await deleteDriver.mutateAsync(id);
-    setIsDeleteOpen(false);
-    navigate('/drivers');
+    try {
+      await deleteDriver.mutateAsync(id);
+      setIsDeleteOpen(false);
+      navigate('/drivers');
+    } catch {
+      // Global mutation error toast already shown; keep the confirm dialog open so the admin can retry.
+    }
   }
 
   if (driver.isLoading || !driver.data) {
