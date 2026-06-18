@@ -12,6 +12,7 @@ const driverSchema = z.object({
   identificationNumber: z.string().min(1, 'Required'),
   guarantorName: z.string().min(1, 'Required'),
   guarantorPhone: z.string().min(1, 'Required'),
+  guarantorAddress: z.string().min(1, 'Required'),
 });
 
 export type DriverFormValues = z.infer<typeof driverSchema>;
@@ -57,6 +58,9 @@ export function DriverForm({ defaultValues, onSubmit, onCancel, submitLabel = 'S
       </FormField>
       <FormField label="Guarantor Phone" error={errors.guarantorPhone?.message}>
         <input className={inputClass} {...register('guarantorPhone')} />
+      </FormField>
+      <FormField label="Guarantor Address" error={errors.guarantorAddress?.message}>
+        <input className={inputClass} {...register('guarantorAddress')} />
       </FormField>
 
       <div className="flex justify-end gap-3 pt-2">

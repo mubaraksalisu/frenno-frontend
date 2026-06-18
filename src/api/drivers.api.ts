@@ -18,6 +18,7 @@ export interface DriverInput {
   identificationNumber: string;
   guarantorName: string;
   guarantorPhone: string;
+  guarantorAddress: string;
 }
 
 export async function getDrivers(params: DriverQueryParams): Promise<PaginatedResponse<Driver>> {

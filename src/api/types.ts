@@ -25,6 +25,7 @@ export interface Driver {
   identificationNumber: string;
   guarantorName: string;
   guarantorPhone: string;
+  guarantorAddress: string | null;
   status: DriverStatus;
   createdAt: string;
   updatedAt: string;

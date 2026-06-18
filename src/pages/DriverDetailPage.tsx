@@ -62,7 +62,7 @@ export function DriverDetailPage() {
           <Skeleton className="mt-2 h-5 w-16" />
         </div>
         <div className="grid grid-cols-1 gap-4 rounded-lg border border-gray-200 bg-white p-5 sm:grid-cols-2">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 7 }).map((_, i) => (
             <div key={i} className="space-y-2">
               <Skeleton className="h-3 w-20" />
               <Skeleton className="h-4 w-40" />
@@ -119,6 +119,7 @@ export function DriverDetailPage() {
         <Info label="License Number" value={data.licenseNumber} />
         <Info label="Identification Number" value={data.identificationNumber} />
         <Info label="Guarantor" value={`${data.guarantorName} (${data.guarantorPhone})`} />
+        <Info label="Guarantor Address" value={data.guarantorAddress ?? '—'} />
       </div>
 
       <section>
@@ -139,7 +140,12 @@ export function DriverDetailPage() {
 
       <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} title="Edit Driver">
         {formError && <p className="mb-3 text-sm text-red-600">{formError}</p>}
-        <DriverForm defaultValues={data} onSubmit={handleUpdate} onCancel={() => setIsEditOpen(false)} submitLabel="Save" />
+        <DriverForm
+          defaultValues={{ ...data, guarantorAddress: data.guarantorAddress ?? '' }}
+          onSubmit={handleUpdate}
+          onCancel={() => setIsEditOpen(false)}
+          submitLabel="Save"
+        />
       </Modal>
 
       <ConfirmDialog
