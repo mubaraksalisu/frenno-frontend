@@ -18,19 +18,30 @@ export function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <SummaryCard label="Total Drivers" value={String(summary.data?.totalDrivers ?? '—')} />
-        <SummaryCard label="Total Vehicles" value={String(summary.data?.totalVehicles ?? '—')} />
+        <SummaryCard
+          label="Total Drivers"
+          value={String(summary.data?.totalDrivers ?? '—')}
+          isLoading={summary.isLoading}
+        />
+        <SummaryCard
+          label="Total Vehicles"
+          value={String(summary.data?.totalVehicles ?? '—')}
+          isLoading={summary.isLoading}
+        />
         <SummaryCard
           label="Total Expected Returns"
           value={summary.data ? formatCurrency(summary.data.totalExpectedReturns) : '—'}
+          isLoading={summary.isLoading}
         />
         <SummaryCard
           label="Total Payments Received"
           value={summary.data ? formatCurrency(summary.data.totalPaymentsReceived) : '—'}
+          isLoading={summary.isLoading}
         />
         <SummaryCard
           label="Total Outstanding Balance"
           value={summary.data ? formatCurrency(summary.data.totalOutstandingBalance) : '—'}
+          isLoading={summary.isLoading}
         />
       </div>
 

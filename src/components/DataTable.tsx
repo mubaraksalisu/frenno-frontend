@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Skeleton } from './Skeleton';
 
 export interface DataTableColumn<T> {
   key: string;
@@ -30,14 +31,18 @@ export function DataTable<T>({ columns, data, rowKey, isLoading, emptyMessage = 
         </thead>
         <tbody className="divide-y divide-gray-100">
           {isLoading ? (
-            <tr>
-              <td colSpan={columns.length} className="px-4 py-6 text-center text-gray-400">
-                Loading…
-              </td>
-            </tr>
+            Array.from({ length: 5 }).map((_, rowIndex) => (
+              <tr key={`skeleton-${rowIndex}`}>
+                {columns.map((column) => (
+                  <td key={column.key} className="px-4 py-3">
+                    <Skeleton className="h-4 w-full max-w-[10rem]" />
+                  </td>
+                ))}
+              </tr>
+            ))
           ) : data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-4 py-6 text-center text-gray-400">
+              <td colSpan={columns.length} className="px-4 py-12 text-center text-gray-400">
                 {emptyMessage}
               </td>
             </tr>
