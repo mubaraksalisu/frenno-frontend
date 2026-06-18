@@ -15,6 +15,14 @@ export interface AuthUser {
   role: string;
 }
 
+export interface AdminUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  createdAt: string;
+}
+
 export interface Driver {
   id: string;
   fullName: string;

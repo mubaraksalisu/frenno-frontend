@@ -27,3 +27,7 @@ export function invalidateNextWeekNumber(queryClient: QueryClient, vehicleId: st
 export function invalidatePaymentsList(queryClient: QueryClient): void {
   void queryClient.invalidateQueries({ queryKey: ['payments', 'list'] });
 }
+
+export function invalidateUsersList(queryClient: QueryClient): void {
+  void queryClient.invalidateQueries({ queryKey: ['users', 'list'] });
+}

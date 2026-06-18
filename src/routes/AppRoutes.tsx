@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppLayout } from '../layouts/AppLayout';
+import { AdminsPage } from '../pages/AdminsPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { DriverDetailPage } from '../pages/DriverDetailPage';
 import { DriversPage } from '../pages/DriversPage';
@@ -22,6 +23,7 @@ export function AppRoutes() {
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/vehicles/:id" element={<VehicleDetailPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/admins" element={<AdminsPage />} />
         </Route>
       </Route>
 
