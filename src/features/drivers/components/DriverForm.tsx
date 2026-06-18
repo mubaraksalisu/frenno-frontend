@@ -16,7 +16,7 @@ const driverSchema = z.object({
 
 export type DriverFormValues = z.infer<typeof driverSchema>;
 
-const inputClass = 'w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none';
+const inputClass = 'w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none';
 
 interface DriverFormProps {
   defaultValues?: Partial<DriverFormValues>;
@@ -66,7 +66,7 @@ export function DriverForm({ defaultValues, onSubmit, onCancel, submitLabel = 'S
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-60"
+          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
         >
           {isSubmitting ? 'Saving…' : submitLabel}
         </button>

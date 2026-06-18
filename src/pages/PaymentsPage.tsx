@@ -50,7 +50,7 @@ export function PaymentsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-gray-900">Payments</h1>
           <p className="text-sm text-gray-500">All weekly repayments across the fleet</p>
@@ -58,7 +58,7 @@ export function PaymentsPage() {
         <button
           onClick={() => setIsAddOpen(true)}
           type="button"
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Add Payment
         </button>
@@ -68,7 +68,7 @@ export function PaymentsPage() {
         <select
           value={vehicleId}
           onChange={(event) => setVehicleId(event.target.value)}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none"
         >
           <option value="">All vehicles</option>
           {(vehicles.data?.data ?? []).map((vehicle) => (
@@ -81,14 +81,14 @@ export function PaymentsPage() {
           type="date"
           value={dateFrom}
           onChange={(event) => setDateFrom(event.target.value)}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none"
         />
         <span className="text-sm text-gray-400">to</span>
         <input
           type="date"
           value={dateTo}
           onChange={(event) => setDateTo(event.target.value)}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none"
         />
       </div>
 

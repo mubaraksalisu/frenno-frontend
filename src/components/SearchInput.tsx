@@ -26,7 +26,7 @@ export function SearchInput({ placeholder, value, onChange, debounceMs = 300 }: 
       placeholder={placeholder}
       value={localValue}
       onChange={(event) => setLocalValue(event.target.value)}
-      className="w-full max-w-xs rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none"
+      className="w-full max-w-xs rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none"
     />
   );
 }

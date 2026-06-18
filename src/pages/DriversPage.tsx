@@ -32,7 +32,7 @@ export function DriversPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-gray-900">Drivers</h1>
           <p className="text-sm text-gray-500">Manage driver records</p>
@@ -40,7 +40,7 @@ export function DriversPage() {
         <button
           onClick={() => setIsAddOpen(true)}
           type="button"
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Add Driver
         </button>
@@ -52,7 +52,7 @@ export function DriversPage() {
         <select
           value={status}
           onChange={(event) => setStatus(event.target.value as 'active' | 'all')}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none"
         >
           <option value="active">Active only</option>
           <option value="all">All (incl. archived)</option>

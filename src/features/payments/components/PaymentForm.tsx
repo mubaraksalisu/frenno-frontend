@@ -14,7 +14,7 @@ const paymentSchema = z.object({
 
 export type PaymentFormValues = z.infer<typeof paymentSchema>;
 
-const inputClass = 'w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-900 focus:outline-none';
+const inputClass = 'w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-600 focus:outline-none';
 
 interface PaymentFormProps {
   vehicles?: Vehicle[];
@@ -68,7 +68,7 @@ export function PaymentForm({ vehicles, lockedVehicleId, defaultValues, onSubmit
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-60"
+          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-60"
         >
           {isSubmitting ? 'Saving…' : 'Add Payment'}
         </button>
